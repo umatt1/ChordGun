@@ -4,7 +4,7 @@
     <reapack name="ChordGunPackage.lua" type="script" desc="Chord Gun">
       <metadata>
       </metadata>
-      <version name="1.1" author="umatt1" time="2025-09-11T16:21:54Z">
+      <version name="1.2" author="umatt1" time="2025-09-11T16:21:54Z">
         <source main="main midi_editor" file="pkg/ChordGun.lua">https://github.com/umatt1/ChordGun/raw/99cb1a9d761fce6c834f90812e43d0dd134aa658/ChordGun/pkg/ChordGun.lua</source>
         <source main="main midi_editor" file="pkg/ChordGun_decrementChordInversion.lua">https://github.com/umatt1/ChordGun/raw/99cb1a9d761fce6c834f90812e43d0dd134aa658/ChordGun/pkg/ChordGun_decrementChordInversion.lua</source>
         <source main="main midi_editor" file="pkg/ChordGun_decrementChordType.lua">https://github.com/umatt1/ChordGun/raw/99cb1a9d761fce6c834f90812e43d0dd134aa658/ChordGun/pkg/ChordGun_decrementChordType.lua</source>
