@@ -3,22 +3,6 @@
   <category name="ChordGun">
     <reapack name="ChordGunPackage.lua" type="script" desc="Chord Gun">
       <metadata>
-        <description><![CDATA[Chord Gun is a Reaper tool that fires scale chords and notes into a composition. It can sequence through the MIDI Editor or record directly into Media Items.
-
-Keyboard Shortcuts (when GUI has focus):
-- 0: Stop all notes from playing
-- 1-7: Play scale chords 1-7
-- q-u: Higher scale notes 1-7
-- a-j: Scale notes 1-7
-- z-m: Lower scale notes 1-7
-- ctrl+, .: Decrement/Increment scale tonic note
-- ctrl+shift+, .: Decrement/Increment scale type
-- option+, .: Halve/Double grid size
-- option+shift+, .: Decrement/Increment octave
-- command+, .: Decrement/Increment chord type
-- command+shift+, .: Decrement/Increment chord inversion
-
-For more details, visit the instructional video or the forum link provided.]]></description>
         <link rel="website">https://forum.cockos.com/member.php?u=127396</link>
         <link rel="screenshot">https://github.com/benjohnson2001/ChordGun/raw/master/ChordGun/src/images/chordGunInterface.png</link>
         <link rel="donation">https://paypal.me/benjohnson2001</link>
