@@ -4075,6 +4075,51 @@ function ChordInversionValueBox:update()
 
   self:drawText()
 end
+
+-- Define a new class for BreakValueBox
+BreakValueBox = {}
+BreakValueBox.__index = BreakValueBox
+
+function BreakValueBox:new(x, y, width, height)
+  local self = {}
+  setmetatable(self, BreakValueBox)
+
+  self.x = x
+  self.y = y
+  self.width = width
+  self.height = height
+
+  return self
+end
+
+function BreakValueBox:drawRectangle()
+  setDrawColorToValueBoxBackground()
+  gfx.rect(self.x, self.y, self.width, self.height)
+end
+
+function BreakValueBox:drawRectangleOutline()
+  setDrawColorToValueBoxOutline()
+  gfx.rect(self.x-1, self.y-1, self.width+1, self.height+1, false)
+end
+
+function BreakValueBox:drawRectangles()
+  self:drawRectangle()
+  self:drawRectangleOutline()
+end
+
+function BreakValueBox:drawText()
+  local breakText = "Yes" -- Default text for now
+  setDrawColorToValueBoxText()
+  local stringWidth, stringHeight = gfx.measurestr(breakText)
+  gfx.x = self.x + ((self.width - stringWidth) / 2)
+  gfx.y = self.y + ((self.height - stringHeight) / 2)
+  gfx.drawstr(breakText)
+end
+
+function BreakValueBox:update()
+  self:drawRectangles()
+  self:drawText()
+end
 local workingDirectory = reaper.GetResourcePath() .. "/Scripts/ChordGun/src"
 
 ChordButton = {}
@@ -4861,6 +4906,11 @@ function Interface:addOctaveValueBox(x, y, width, height)
 	table.insert(self.elements, valueBox)
 end
 
+function Interface:addBreakValueBox(x, y, width, height)
+  local valueBox = BreakValueBox:new(x, y, width, height)
+  table.insert(self.elements, valueBox)
+end
+
 function Interface:updateElements()
 
 	for _, element in pairs(self.elements) do
@@ -5045,6 +5095,7 @@ function Interface:addBottomFrame()
   self:addChordTextLabel()
   self:addInversionLabel()
   self:addInversionValueBox()
+  self:addBreakValueBox()
   
   self:addHeaders()
 	self:addChordButtons()
@@ -5077,6 +5128,21 @@ function Interface:addInversionValueBox()
   local inversionValueBoxYPos = yMargin + 9
   local inversionValueBoxHeight = 15
   self:addChordInversionValueBox(inversionValueBoxXPos+dockerXPadding, inversionValueBoxYPos, inversionValueBoxWidth, inversionValueBoxHeight)
+end
+
+function Interface:addBreakValueBox()
+  local breakLabelText = "Break:"
+  local breakLabelXPos = xMargin + xPadding + chordTextWidth + inversionLabelWidth + inversionValueBoxWidth + 10
+  local breakLabelYPos = yMargin + 4
+  local breakLabelWidth = 50
+  local breakLabelHeight = 24
+  self:addLabel(breakLabelXPos+dockerXPadding, breakLabelYPos, breakLabelWidth, breakLabelHeight, function() return breakLabelText end)
+
+  local breakValueBoxXPos = breakLabelXPos + breakLabelWidth + 5
+  local breakValueBoxYPos = yMargin + 9
+  local breakValueBoxWidth = 55
+  local breakValueBoxHeight = 15
+  self:addBreakValueBox(breakValueBoxXPos+dockerXPadding, breakValueBoxYPos, breakValueBoxWidth, breakValueBoxHeight)
 end
 
 function Interface:addHeaders()

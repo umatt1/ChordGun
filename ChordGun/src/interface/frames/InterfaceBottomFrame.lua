@@ -20,6 +20,7 @@ function Interface:addBottomFrame()
   self:addChordTextLabel()
   self:addInversionLabel()
   self:addInversionValueBox()
+  self:addBreakValueBox()
   
   self:addHeaders()
 	self:addChordButtons()
@@ -52,6 +53,21 @@ function Interface:addInversionValueBox()
   local inversionValueBoxYPos = yMargin + 9
   local inversionValueBoxHeight = 15
   self:addChordInversionValueBox(inversionValueBoxXPos+dockerXPadding, inversionValueBoxYPos, inversionValueBoxWidth, inversionValueBoxHeight)
+end
+
+function Interface:addBreakValueBox()
+  local breakLabelText = "Break:"
+  local breakLabelXPos = xMargin + xPadding + chordTextWidth + inversionLabelWidth + inversionValueBoxWidth + 10
+  local breakLabelYPos = yMargin + 4
+  local breakLabelWidth = 50
+  local breakLabelHeight = 24
+  self:addLabel(breakLabelXPos+dockerXPadding, breakLabelYPos, breakLabelWidth, breakLabelHeight, function() return breakLabelText end)
+
+  local breakValueBoxXPos = breakLabelXPos + breakLabelWidth + 5
+  local breakValueBoxYPos = yMargin + 9
+  local breakValueBoxWidth = 55
+  local breakValueBoxHeight = 15
+  self:addBreakValueBox(breakValueBoxXPos+dockerXPadding, breakValueBoxYPos, breakValueBoxWidth, breakValueBoxHeight)
 end
 
 function Interface:addHeaders()

@@ -120,6 +120,11 @@ function Interface:addOctaveValueBox(x, y, width, height)
 	table.insert(self.elements, valueBox)
 end
 
+function Interface:addBreakValueBox(x, y, width, height)
+  local valueBox = BreakValueBox:new(x, y, width, height)
+  table.insert(self.elements, valueBox)
+end
+
 function Interface:updateElements()
 
 	for _, element in pairs(self.elements) do
